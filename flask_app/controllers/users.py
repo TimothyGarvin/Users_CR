@@ -39,8 +39,11 @@ def edit(id):
 
 @app.route('/edit',methods=['POST'])
 def update():
+    data = {
+        'id':request.form['id']
+    }
     Users.edit(request.form)
-    return redirect('/')
+    return redirect(f'/user/show/{data["id"]}')
 
 @app.route('/user/delete/<int:id>')
 def delete(id):
